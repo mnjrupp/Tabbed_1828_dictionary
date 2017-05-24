@@ -8,9 +8,48 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.mnjru.tabbed_1828_dictionary.MainActivity">
 
-    <TextView
-        android:id="@+id/section_search"
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteTextView1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="false"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:lines="1"
+        android:singleLine="true"
+        android:imeOptions="actionDone"
+        android:maxLines="1"
+        android:textSize="20sp"
+        android:background="@drawable/border_style" >
+
+        <requestFocus />
+    </AutoCompleteTextView>
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ImageButton
+        android:id="@+id/imageButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/autoCompleteTextView1"
+        android:layout_alignTop="@+id/autoCompleteTextView1"
+        android:layout_toRightOf="@+id/autoCompleteTextView1"
+        android:src="@android:drawable/ic_menu_search"
+        android:background="@drawable/button_bkground"
+        />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/autoCompleteTextView1"
+        android:layout_marginTop="10dp"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
+        android:textIsSelectable="true"
+        />
 
 </RelativeLayout>
