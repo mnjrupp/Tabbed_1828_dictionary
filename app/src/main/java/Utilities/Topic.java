@@ -6,9 +6,9 @@ package Utilities;
 
 public class Topic {
     //private variables
-    String topic;
-    String last_accessed;
-    int Count;
+    private String topic;
+    private String last_accessed;
+    private int Count;
 
     public Topic(String topic, String last_accessed, int count) {
         this.topic = topic;

@@ -1,6 +1,8 @@
 package Utilities;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
@@ -12,12 +14,13 @@ import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 public class HistoryDBHelper extends SQLiteAssetHelper {
 
     private static final String DATABASE_NAME = "HistoryTopics.db";
+    private static final String TABLE_NAME = "topic_history";
 
     private static final int DATABASE_VERSION = 1;
 
-    private static final String TOPIC_NAME = "Topic";
-
-    private  static final String LAST_ACCESSED_DTE = "Last_access_dte";
+    private static final String TOPIC_NAME = "topic";
+    private static final String COUNT = "count";
+    private  static final String LAST_ACCESSED_DTE = "last_accessed_dte";
 
     public HistoryDBHelper(Context context) {
         super(context, DATABASE_NAME,null, DATABASE_VERSION);
@@ -34,7 +37,26 @@ public class HistoryDBHelper extends SQLiteAssetHelper {
         super.onUpgrade(db, oldVersion, newVersion);
     }
 
-    public void addHistory(Topic topic){
+    public void addHistory(Topic topic,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(TOPIC_NAME,topic.getTopic());
+        contentValues.put(LAST_ACCESSED_DTE,topic.getLast_accessed());
+        contentValues.put(COUNT,topic.getCount());
+        db.insert(TABLE_NAME,null,contentValues);
+
+    }
+
+    public boolean topicExists(String topic,SQLiteDatabase db){
+
+        return false;
+    }
+
+    public Cursor getInformation(SQLiteDatabase db){
+        Cursor cursor;
+        String[] columns = {TOPIC_NAME,LAST_ACCESSED_DTE,COUNT};
+        cursor = db.query(TABLE_NAME,columns,null,null,null,null,LAST_ACCESSED_DTE);
+        return cursor;
+
 
     }
 
