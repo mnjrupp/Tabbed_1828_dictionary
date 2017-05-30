@@ -123,5 +123,6 @@ public class SubSearch extends Fragment{
         txtview.setText(db.getDefnition(input));
         // Scroll the TextView to the top
         txtview.scrollTo(0, 0);
+        db.close();
     }
 }
