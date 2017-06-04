@@ -1,5 +1,6 @@
 package Layout;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,10 +13,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mnjru.tabbed_1828_dictionary.R;
 
@@ -26,6 +29,7 @@ import Utilities.DicDatabaseHelper;
  */
 
 public class SubSearch extends Fragment{
+    private Context context;
     AutoCompleteTextView autoComplete;
     ArrayAdapter<String> autoAdapter;
     TextView txtview;
@@ -33,7 +37,7 @@ public class SubSearch extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_search,container,false);
+        final View view = inflater.inflate(R.layout.fragment_search,container,false);
         // instantiate the TextView
         txtview = (TextView) view.findViewById(R.id.textView1);
         txtview.setMovementMethod(new ScrollingMovementMethod());
@@ -41,7 +45,9 @@ public class SubSearch extends Fragment{
         ImageButton ibutton = (ImageButton) view.findViewById(R.id.imageButton1);
         ibutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                autoComplete = (AutoCompleteTextView) v.findViewById(R.id.autoCompleteTextView1);
+                // v is the button but we need the view returned from inflater earlier
+                // necessary to make view final
+                autoComplete = (AutoCompleteTextView) view.findViewById(R.id.autoCompleteTextView1);
                 String topic = autoComplete.getText().toString();
                 getCompleteDefinition(topic);
             }
@@ -65,9 +71,21 @@ public class SubSearch extends Fragment{
                    item = db.getAutosearchArray(s.toString());
 
                     // update the adapter
-                    autoAdapter.notifyDataSetChanged();
+
                     autoAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line, item);
+                    autoAdapter.notifyDataSetChanged();
                     autoComplete.setAdapter(autoAdapter);
+
+                    // onItemClickListener to capture topic selected in dropdown
+                    autoComplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            //String selected = (String) parent.getItemAtPosition(position);
+                            String selected = ((TextView)view).getText().toString();
+                            Toast.makeText(context,selected, Toast.LENGTH_SHORT).show();
+                            
+                        }
+                    });
                 }
 
                 @Override
@@ -107,6 +125,7 @@ public class SubSearch extends Fragment{
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        context=getActivity();
     }
 
     @Override
@@ -118,7 +137,7 @@ public class SubSearch extends Fragment{
     public void getCompleteDefinition(String input)
     {
         //TODO make input proper case before searching database
-        DicDatabaseHelper db = new DicDatabaseHelper(getContext());
+        DicDatabaseHelper db = new DicDatabaseHelper(context);
         // query the database based on the user input
         txtview.setText(db.getDefnition(input));
         // Scroll the TextView to the top
