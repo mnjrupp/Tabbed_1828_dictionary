@@ -131,4 +131,30 @@ public class DicDatabaseHelper extends SQLiteAssetHelper {
     	db.close();
     	return definition;
     }
+
+    public Cursor getTopicsbyAlpha(String alpha){
+        Cursor cursor = null;
+        List<String> topics = new ArrayList<String>();
+        //Select Query
+        String Sql = "";
+        Sql+="SELECT Topic FROM Dictionary ";
+        Sql+="Where Topic LIKE '" + alpha + "%'";
+        Sql+=" ORDER BY Topic ASC";
+        //Log.e("DicDatabaseHelper","SQL =>" +Sql);
+        SQLiteDatabase db = this.getReadableDatabase();
+        try{
+            cursor = db.rawQuery(Sql,null);
+
+            //loop through records
+
+        }catch(SQLException mSQLException){
+            Log.e("DicDatabaseHelper", "getAutosearchArray >>" + mSQLException.toString());
+        }
+
+        db.close();
+
+        //return list of records
+        return cursor;
+
+    }
 }

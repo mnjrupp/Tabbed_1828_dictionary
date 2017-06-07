@@ -82,7 +82,8 @@ public class SubSearch extends Fragment{
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             //String selected = (String) parent.getItemAtPosition(position);
                             String selected = ((TextView)view).getText().toString();
-                            Toast.makeText(context,selected, Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(context,selected, Toast.LENGTH_SHORT).show();
+                            getCompleteDefinition(selected);
                             
                         }
                     });

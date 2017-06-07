@@ -9,10 +9,10 @@ import android.os.AsyncTask;
 
 public class TaskGetHistory extends AsyncTask<String,Void,String> {
 
-    private Context cxt;
+    private Context ctx;
 
-    public TaskGetHistory() {
-        super();
+    public TaskGetHistory(Context context) {
+        this.ctx=context;
     }
 
     @Override
