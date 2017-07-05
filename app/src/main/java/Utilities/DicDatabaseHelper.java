@@ -151,7 +151,7 @@ public class DicDatabaseHelper extends SQLiteAssetHelper {
             Log.e("DicDatabaseHelper", "getAutosearchArray >>" + mSQLException.toString());
         }
 
-        db.close();
+        //db.close();
 
         //return list of records
         return cursor;

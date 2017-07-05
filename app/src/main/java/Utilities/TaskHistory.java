@@ -60,6 +60,7 @@ public class TaskHistory extends AsyncTask<String,Topic,String> {
         else if(method.equals("get_hist")){
             // initialize the view from the Activity
             listView = (ListView) activity.findViewById(R.id.list_history);
+            historyDBHelper = new HistoryDBHelper(ctx);
             SQLiteDatabase db = historyDBHelper.getReadableDatabase();
             Cursor cursor = historyDBHelper.getInformation(db);
             historyAdapter = new HistoryAdapter(ctx, R.layout.raw_history_row);
@@ -86,7 +87,9 @@ public class TaskHistory extends AsyncTask<String,Topic,String> {
     @Override
     protected void onPostExecute(String s) {
         if(s.equals("get_hist")){
-            listView.setAdapter(historyAdapter);
+            if(listView!=null) {
+                listView.setAdapter(historyAdapter);
+            }
         }
         else{
            // do nothing at this time
