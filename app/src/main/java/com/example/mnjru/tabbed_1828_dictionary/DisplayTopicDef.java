@@ -29,7 +29,7 @@ public class DisplayTopicDef extends AppCompatActivity {
         if(!topic.isEmpty()) {
             setTitle(topic);
         }
-        //TODO make input proper case before searching database
+        //make input proper case before searching database
         DicDatabaseHelper db = new DicDatabaseHelper(this);
         // query the database based on the user input
         textViewDef.setText(db.getDefnition(topic));

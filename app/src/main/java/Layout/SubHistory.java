@@ -19,14 +19,15 @@ public class SubHistory extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        TaskHistory taskHistory = new TaskHistory(getContext());
-        taskHistory.execute("get_hist");
+
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_history,container,false);
+        TaskHistory taskHistory = new TaskHistory(getContext());
+        taskHistory.execute("get_hist");
         return view;
     }
 }

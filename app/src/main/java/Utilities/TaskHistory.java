@@ -45,10 +45,11 @@ public class TaskHistory extends AsyncTask<String,Topic,String> {
 
             topicname = params[1];
             last_access = params[2];
-
+            historyDBHelper = new HistoryDBHelper(ctx);
+            SQLiteDatabase db = historyDBHelper.getWritableDatabase();
             Topic topic = new Topic(topicname,last_access,1);
             try {
-                SQLiteDatabase db = historyDBHelper.getWritableDatabase();
+
                 historyDBHelper.addHistory(topic, db);
             }catch (SQLException mSQLException){
                 Log.e("TaskHistory","Error when adding history " + mSQLException.toString());
@@ -67,7 +68,7 @@ public class TaskHistory extends AsyncTask<String,Topic,String> {
             String topicname,last_access;
             int count;
             while(cursor.moveToNext()){
-                topicname=cursor.getString(cursor.getColumnIndex("Topic"));
+                topicname=cursor.getString(cursor.getColumnIndex("topic"));
                 last_access = cursor.getString(cursor.getColumnIndex("last_accessed_dte"));
                 count = cursor.getInt(cursor.getColumnIndex("count"));
                 Topic topic = new Topic(topicname,last_access,count);

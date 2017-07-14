@@ -45,11 +45,6 @@ public class DisplayTopics extends Activity {
     }
 
 
-   /* public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_topics_alpha, container, false);
-        listView = (ListView) view.findViewById(R.id.list_topics_alpha);
-        return view;
-    }*/
 
     public void updateAlpha(String alpha)
     {

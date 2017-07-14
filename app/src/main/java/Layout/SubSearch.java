@@ -22,7 +22,11 @@ import android.widget.Toast;
 
 import com.example.mnjru.tabbed_1828_dictionary.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import Utilities.DicDatabaseHelper;
+import Utilities.TaskHistory;
 
 /**
  * Created by mnjru on 5/21/2017.
@@ -137,12 +141,19 @@ public class SubSearch extends Fragment{
 
     public void getCompleteDefinition(String input)
     {
-        //TODO make input proper case before searching database
+        //make input proper case before searching database
         DicDatabaseHelper db = new DicDatabaseHelper(context);
         // query the database based on the user input
         txtview.setText(db.getDefnition(input));
         // Scroll the TextView to the top
         txtview.scrollTo(0, 0);
         db.close();
+
+        Date dNow = new Date( );
+        SimpleDateFormat ft =
+                new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a");
+        TaskHistory taskHistory = new TaskHistory(getContext());
+        taskHistory.execute("add_hist",input,ft.format(dNow));
+
     }
 }

@@ -41,7 +41,8 @@ public class HistoryDBHelper extends SQLiteAssetHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(TOPIC_NAME,topic.getTopic());
         contentValues.put(LAST_ACCESSED_DTE,topic.getLast_accessed());
-        contentValues.put(COUNT,topic.getCount());
+        // Get current count if topic is in database
+        contentValues.put(COUNT,topic.getCount()+getAccessedCount(topic.getTopic()));
         db.insert(TABLE_NAME,null,contentValues);
 
     }
@@ -58,6 +59,17 @@ public class HistoryDBHelper extends SQLiteAssetHelper {
         return cursor;
 
 
+    }
+    public int getAccessedCount(String topic){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor;
+        int accessedCount = 0;
+        String SQL = "SELECT * FROM "+TABLE_NAME + " WHERE "+TOPIC_NAME+"='"+topic+"';";
+        cursor = db.rawQuery(SQL,null);
+        if(cursor.moveToFirst()){
+            accessedCount = cursor.getInt(cursor.getColumnIndex("count"));
+        }
+        return accessedCount;
     }
 
 }
