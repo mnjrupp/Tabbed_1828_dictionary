@@ -3,9 +3,13 @@ package Utilities;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
+
+import java.io.UnsupportedEncodingException;
 
 /**
  * Created by mnjru on 5/27/2017.
@@ -46,6 +50,18 @@ public class HistoryDBHelper extends SQLiteAssetHelper {
         db.insert(TABLE_NAME,null,contentValues);
 
     }
+    public void updateHistory(Topic topic,SQLiteDatabase db){
+        String topicname = topic.getTopic().toString();
+        if(!topicname.isEmpty()){
+            String SQL = "Update "+TABLE_NAME+" set "+LAST_ACCESSED_DTE+"='"+topic.getLast_accessed().toString()+"',"+
+                    COUNT+"="+(topic.getCount()+1)+" WHERE "+TOPIC_NAME+"='"+topicname+"';";
+            try{
+                db.rawQuery(SQL,null);
+            }catch(SQLException mSQLException){
+                Log.e("HistoryDBHelper", "updateHistory >> " + mSQLException.toString());
+            }
+        }
+    }
 
     public boolean topicExists(String topic,SQLiteDatabase db){
 
@@ -71,5 +87,6 @@ public class HistoryDBHelper extends SQLiteAssetHelper {
         }
         return accessedCount;
     }
+
 
 }

@@ -49,8 +49,12 @@ public class TaskHistory extends AsyncTask<String,Topic,String> {
             SQLiteDatabase db = historyDBHelper.getWritableDatabase();
             Topic topic = new Topic(topicname,last_access,1);
             try {
-
-                historyDBHelper.addHistory(topic, db);
+                //If the topic is in history table, update instead of add
+                if(historyDBHelper.getAccessedCount(topicname)>0){
+                    historyDBHelper.updateHistory(topic,db);
+                }else {
+                    historyDBHelper.addHistory(topic, db);
+                }
             }catch (SQLException mSQLException){
                 Log.e("TaskHistory","Error when adding history " + mSQLException.toString());
             }
