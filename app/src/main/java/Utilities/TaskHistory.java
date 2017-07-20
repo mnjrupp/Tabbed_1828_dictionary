@@ -2,13 +2,18 @@ package Utilities;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import com.example.mnjru.tabbed_1828_dictionary.DisplayTopicDef;
 import com.example.mnjru.tabbed_1828_dictionary.R;
 
 /**
@@ -20,6 +25,7 @@ public class TaskHistory extends AsyncTask<String,Topic,String> {
     private Context ctx;
     HistoryDBHelper historyDBHelper;
     HistoryAdapter historyAdapter;
+    public final static String TOPIC = "topic";
     // Need Activity to display in the SubHistory activity
     Activity activity;
     ListView listView;
@@ -93,7 +99,21 @@ public class TaskHistory extends AsyncTask<String,Topic,String> {
     protected void onPostExecute(String s) {
         if(s.equals("get_hist")){
             if(listView!=null) {
+                View header = View.inflate(ctx,R.layout.history_header, null);
+                listView.addHeaderView(header);
                 listView.setAdapter(historyAdapter);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        String topic = ((TextView) view.findViewById(R.id.text_topic)).getText().toString();
+                        if(!topic.isEmpty()) {
+                            Intent intent = new Intent(ctx, DisplayTopicDef.class);
+                            intent.putExtra(TOPIC, topic);
+                            activity.startActivity(intent);
+                        }else{/* empty topic: do nothing*/}
+                    }
+                });
+
             }
         }
         else{
