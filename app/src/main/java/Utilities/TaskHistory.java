@@ -105,12 +105,15 @@ public class TaskHistory extends AsyncTask<String,Topic,String> {
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        String topic = ((TextView) view.findViewById(R.id.text_topic)).getText().toString();
-                        if(!topic.isEmpty()) {
-                            Intent intent = new Intent(ctx, DisplayTopicDef.class);
-                            intent.putExtra(TOPIC, topic);
-                            activity.startActivity(intent);
-                        }else{/* empty topic: do nothing*/}
+                        // don't want the header
+                        if(id>=0) {
+                            String topic = ((TextView) view.findViewById(R.id.text_topic)).getText().toString();
+                            if (!topic.isEmpty()) {
+                                Intent intent = new Intent(ctx, DisplayTopicDef.class);
+                                intent.putExtra(TOPIC, topic);
+                                activity.startActivity(intent);
+                            } else {/* empty topic: do nothing*/}
+                        }
                     }
                 });
 

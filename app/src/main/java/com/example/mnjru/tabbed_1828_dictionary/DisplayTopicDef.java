@@ -9,7 +9,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import Utilities.DicDatabaseHelper;
+import Utilities.TaskHistory;
 
 public class DisplayTopicDef extends AppCompatActivity {
 
@@ -29,13 +33,7 @@ public class DisplayTopicDef extends AppCompatActivity {
         if(!topic.isEmpty()) {
             setTitle(topic);
         }
-        //make input proper case before searching database
-        DicDatabaseHelper db = new DicDatabaseHelper(this);
-        // query the database based on the user input
-        textViewDef.setText(db.getDefnition(topic));
-        // Scroll the TextView to the top
-        textViewDef.scrollTo(0, 0);
-        db.close();
+        getCompleteDefinition(topic);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -48,4 +46,21 @@ public class DisplayTopicDef extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+    private void getCompleteDefinition(String input)
+    {
+        //make input proper case before searching database
+        DicDatabaseHelper db = new DicDatabaseHelper(this);
+        // query the database based on the user input
+        textViewDef.setText(db.getDefnition(input));
+        // Scroll the TextView to the top
+        textViewDef.scrollTo(0, 0);
+        db.close();
+
+        Date dNow = new Date( );
+        SimpleDateFormat ft =
+                new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a");
+        TaskHistory taskHistory = new TaskHistory(this);
+        taskHistory.execute("add_hist",input,ft.format(dNow));
+
+    }
 }

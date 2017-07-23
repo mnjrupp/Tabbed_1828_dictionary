@@ -71,7 +71,9 @@ public class HistoryDBHelper extends SQLiteAssetHelper {
     public Cursor getInformation(SQLiteDatabase db){
         Cursor cursor;
         String[] columns = {TOPIC_NAME,LAST_ACCESSED_DTE,COUNT};
-        cursor = db.query(TABLE_NAME,columns,null,null,null,null,LAST_ACCESSED_DTE);
+        String WHERE = TOPIC_NAME+"<>''";
+        String ORDERBY = "CAST("+LAST_ACCESSED_DTE+" as DATE) DESC";
+        cursor = db.query(TABLE_NAME,columns,WHERE,null,null,null,ORDERBY,null);
         return cursor;
 
 
