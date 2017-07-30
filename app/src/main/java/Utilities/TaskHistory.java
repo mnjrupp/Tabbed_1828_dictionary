@@ -99,8 +99,12 @@ public class TaskHistory extends AsyncTask<String,Topic,String> {
     protected void onPostExecute(String s) {
         if(s.equals("get_hist")){
             if(listView!=null) {
-                View header = View.inflate(ctx,R.layout.history_header, null);
-                listView.addHeaderView(header);
+                // Check for header in listview.
+                // Do not add again
+                if(listView.getHeaderViewsCount()==0) {
+                    View header = View.inflate(ctx, R.layout.history_header, null);
+                    listView.addHeaderView(header);
+                }
                 listView.setAdapter(historyAdapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
