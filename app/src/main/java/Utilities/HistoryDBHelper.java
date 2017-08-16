@@ -47,7 +47,12 @@ public class HistoryDBHelper extends SQLiteAssetHelper {
         contentValues.put(LAST_ACCESSED_DTE,topic.getLast_accessed());
         // Get current count if topic is in database
         contentValues.put(COUNT,topic.getCount()+getAccessedCount(topic.getTopic()));
-        db.insert(TABLE_NAME,null,contentValues);
+        try {
+            db.insert(TABLE_NAME, null, contentValues);
+
+        }catch(SQLException mSQLException){
+            Log.e("HistoryDBHelper", "addHistory >> " + mSQLException.toString());
+        }
 
     }
     public void updateHistory(Topic topic,SQLiteDatabase db){
@@ -56,11 +61,25 @@ public class HistoryDBHelper extends SQLiteAssetHelper {
             String SQL = "Update "+TABLE_NAME+" set "+LAST_ACCESSED_DTE+"='"+topic.getLast_accessed().toString()+"',"+
                     COUNT+"="+(topic.getCount()+1)+" WHERE "+TOPIC_NAME+"='"+topicname+"';";
             try{
-                db.rawQuery(SQL,null);
+                db.execSQL(SQL);
+
             }catch(SQLException mSQLException){
                 Log.e("HistoryDBHelper", "updateHistory >> " + mSQLException.toString());
             }
+
         }
+    }
+
+    public void deleteTopicHistory(String topicname,SQLiteDatabase db){
+        String WHERE = TOPIC_NAME+"='"+topicname+"';";
+        if(!topicname.isEmpty()) {
+            try {
+                db.delete(TABLE_NAME,WHERE,null);
+            } catch (SQLException mSQLException) {
+                Log.e("HistoryDBHelper", "deleteTopicHistory >> " + mSQLException.toString());
+            }
+        }
+        db.close();
     }
 
     public boolean topicExists(String topic,SQLiteDatabase db){

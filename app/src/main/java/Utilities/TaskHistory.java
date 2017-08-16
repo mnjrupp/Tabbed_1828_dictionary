@@ -64,6 +64,7 @@ public class TaskHistory extends AsyncTask<String,Topic,String> {
             }catch (SQLException mSQLException){
                 Log.e("TaskHistory","Error when adding history " + mSQLException.toString());
             }
+            db.close();
             return "add_hist";
 
 
@@ -105,6 +106,8 @@ public class TaskHistory extends AsyncTask<String,Topic,String> {
                     View header = View.inflate(ctx, R.layout.history_header, null);
                     listView.addHeaderView(header);
                 }
+                // register context menu in listview
+               // activity.registerForContextMenu(listView);
                 listView.setAdapter(historyAdapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override

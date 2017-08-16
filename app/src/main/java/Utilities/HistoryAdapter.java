@@ -33,6 +33,17 @@ public class HistoryAdapter extends ArrayAdapter {
         super.add(object);
     }
 
+    public void remove(String topicname) {
+
+        for(int i =0;i<list.size();i++){
+            Topic topic = (Topic)list.get(i);
+            if(topic.getTopic().equals(topicname)){
+                list.remove(i);
+            }
+            notifyDataSetChanged();
+        }
+    }
+
     @Override
     public int getCount() {
         return list.size();
