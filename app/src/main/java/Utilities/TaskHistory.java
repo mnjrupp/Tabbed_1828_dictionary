@@ -3,17 +3,24 @@ package Utilities;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.mnjru.tabbed_1828_dictionary.DisplayTopicDef;
+import com.example.mnjru.tabbed_1828_dictionary.MainActivity;
 import com.example.mnjru.tabbed_1828_dictionary.R;
 
 /**
@@ -75,7 +82,24 @@ public class TaskHistory extends AsyncTask<String,Topic,String> {
             historyDBHelper = new HistoryDBHelper(ctx);
             SQLiteDatabase db = historyDBHelper.getReadableDatabase();
             Cursor cursor = historyDBHelper.getInformation(db);
-            historyAdapter = new HistoryAdapter(ctx, R.layout.raw_history_row);
+            historyAdapter = new HistoryAdapter(ctx, R.layout.raw_history_row){
+                @NonNull
+                @Override
+                public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                    // Set the text size from Preference
+                    int szText = getSharedfontSize();
+                    View view = super.getView(position, convertView, parent);
+                    TextView tv = (TextView) view.findViewById(R.id.text_topic);
+                    TextView tv2=(TextView) view.findViewById(R.id.text_last_accessed);
+                    TextView tv3 = (TextView) view.findViewById(R.id.text_count);
+
+                    tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, szText);
+                    tv2.setTextSize(TypedValue.COMPLEX_UNIT_SP, szText);
+                    tv3.setTextSize(TypedValue.COMPLEX_UNIT_SP, szText);
+                    // Return the view
+                    return view;
+                }
+            };
             String topicname,last_access;
             int count;
             while(cursor.moveToNext()){
@@ -130,4 +154,18 @@ public class TaskHistory extends AsyncTask<String,Topic,String> {
            // do nothing at this time
         }
     }
+    private int getSharedfontSize() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ctx);
+        int szText = Integer.parseInt(sharedPreferences.getString("textsize_list", "-1"));
+        switch (szText) {
+            case -1:
+                // return default text size
+                int szdefault = 14;
+                return szdefault;
+            default:
+                // using the int array from Main Activity
+                return MainActivity.fSize[szText];
+
+        }
+    };
 }

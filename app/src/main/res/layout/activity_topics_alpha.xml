@@ -6,9 +6,10 @@
     <TextView
         android:id="@+id/text_alpha"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="28dp"
         android:layout_margin="@dimen/activity_vertical_margin"
-        android:text="TextView"
+        android:background="@color/colorPrimary"
+        android:text="--"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Button"
         android:textStyle="bold" />

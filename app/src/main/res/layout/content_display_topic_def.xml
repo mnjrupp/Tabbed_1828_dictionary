@@ -12,13 +12,12 @@
 
     <TextView
         android:id="@+id/textViewDef"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="336dp"
+        android:layout_height="463dp"
         android:scrollbarStyle="insideInset"
         android:scrollbars="vertical"
         android:textIsSelectable="true"
+        tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp" />
 
 </android.support.constraint.ConstraintLayout>

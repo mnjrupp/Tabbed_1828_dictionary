@@ -1,6 +1,7 @@
 package Layout;
 
 import android.database.sqlite.SQLiteDatabase;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -17,6 +18,7 @@ import android.widget.HeaderViewListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.mnjru.tabbed_1828_dictionary.MainActivity;
 import com.example.mnjru.tabbed_1828_dictionary.R;
 
 import Utilities.HistoryAdapter;
@@ -76,12 +78,39 @@ public class SubHistory extends Fragment {
     }
 
     @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if(isVisibleToUser && isResumed()){
+            onResume();
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(!getUserVisibleHint()){
+            return;
+        }
+        Log.e("DEBUG","onResume of SubHistory");
+        TaskHistory taskHistory = new TaskHistory(getContext());
+        taskHistory.execute("get_hist");
+        // Set up a new OnClickListener for the FAB
+        MainActivity mainActivity = (MainActivity)getActivity();
+        mainActivity.fab.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Snackbar.make(v, "This is the History Screen", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+    }
+    /*@Override
     public void onResume() {
         Log.e("DEBUG","onResume of SubHistory");
         TaskHistory taskHistory = new TaskHistory(getContext());
         taskHistory.execute("get_hist");
         super.onResume();
-    }
+    }*/
 
     @Override
     public void onPause() {

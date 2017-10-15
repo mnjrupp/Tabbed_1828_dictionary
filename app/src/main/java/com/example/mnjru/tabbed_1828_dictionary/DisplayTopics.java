@@ -2,7 +2,9 @@ package com.example.mnjru.tabbed_1828_dictionary;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.AdapterView;
@@ -39,6 +41,7 @@ public class DisplayTopics extends Activity {
                 intent.putExtra(TOPIC,topic);
                 startActivity(intent);
             }
+
         });
 
 
@@ -52,4 +55,5 @@ public class DisplayTopics extends Activity {
         taskGetTopics.execute("get_topics",alpha);
 
     }
+
 }

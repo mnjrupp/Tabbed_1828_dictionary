@@ -2,12 +2,20 @@ package Utilities;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.util.TypedValue;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.mnjru.tabbed_1828_dictionary.MainActivity;
 import com.example.mnjru.tabbed_1828_dictionary.R;
 
 import java.util.ArrayList;
@@ -26,8 +34,8 @@ public class TaskGetTopics extends AsyncTask<String,String,String> {
     TextView textView;
     List list = new ArrayList();
 
-    public TaskGetTopics(Context context){
-        this.ctx=context;
+    public TaskGetTopics(Context context) {
+        this.ctx = context;
         activity = (Activity) context;
     }
 
@@ -41,7 +49,7 @@ public class TaskGetTopics extends AsyncTask<String,String,String> {
         String method = params[0];
         DicDatabaseHelper dicDatabaseHelper = new DicDatabaseHelper(ctx);
         Cursor cursor;
-        if(method.equals("get_topics")){
+        if (method.equals("get_topics")) {
 
             listView = (ListView) activity.findViewById(R.id.list_topics_alpha);
             textView = (TextView) activity.findViewById(R.id.text_alpha);
@@ -54,13 +62,12 @@ public class TaskGetTopics extends AsyncTask<String,String,String> {
 
             String topicname;
 
-            while(cursor.moveToNext())
-            {
+            while (cursor.moveToNext()) {
                 topicname = cursor.getString(cursor.getColumnIndex("Topic"));
                 publishProgress(topicname);
 
             }
-                return alpha;
+            return alpha;
 
         }
         dicDatabaseHelper.close();
@@ -74,11 +81,36 @@ public class TaskGetTopics extends AsyncTask<String,String,String> {
     }
 
     @Override
-    protected void onPostExecute(String result)
-    {
-        topicAdapter = new ArrayAdapter<>(ctx, android.R.layout.simple_dropdown_item_1line,list);
+    protected void onPostExecute(String result) {
+        topicAdapter = new ArrayAdapter<String>(ctx, android.R.layout.simple_dropdown_item_1line, list) {
+            @NonNull
+            @Override
+            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+                TextView tv = (TextView) view.findViewById(android.R.id.text1);
+                // Set the text size from Preference
+                tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, getSharedfontSize());
+                // Return the view
+                return view;
+            }
+        };
         topicAdapter.notifyDataSetChanged();
         listView.setAdapter(topicAdapter);
         textView.setText(result);
     }
+
+    private int getSharedfontSize() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ctx);
+        int szText = Integer.parseInt(sharedPreferences.getString("textsize_list", "-1"));
+        switch (szText) {
+            case -1:
+                // return default text size
+                int szdefault = 14;
+                return szdefault;
+            default:
+                // using the int array from Main Activity
+                return MainActivity.fSize[szText];
+
+        }
+    };
 }

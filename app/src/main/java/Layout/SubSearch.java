@@ -1,6 +1,9 @@
 package Layout;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,6 +11,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +24,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mnjru.tabbed_1828_dictionary.MainActivity;
 import com.example.mnjru.tabbed_1828_dictionary.R;
 
 import java.text.SimpleDateFormat;
@@ -44,6 +49,8 @@ public class SubSearch extends Fragment{
         final View view = inflater.inflate(R.layout.fragment_search,container,false);
         // instantiate the TextView
         txtview = (TextView) view.findViewById(R.id.textView1);
+        // Set font size from Preferences
+        txtview.setTextSize(TypedValue.COMPLEX_UNIT_SP, getSharedfontSize());
         txtview.setMovementMethod(new ScrollingMovementMethod());
         //find Imagebutton and register onClick event
         ImageButton ibutton = (ImageButton) view.findViewById(R.id.imageButton1);
@@ -139,6 +146,31 @@ public class SubSearch extends Fragment{
 
     }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if(isVisibleToUser && isResumed()){
+            onResume();
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(!getUserVisibleHint()){
+            return;
+        }
+        // Set up a new OnClickListener for the FAB
+        MainActivity mainActivity = (MainActivity)getActivity();
+        mainActivity.fab.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Snackbar.make(v, "This is the Search Screen", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+    }
+
     public void getCompleteDefinition(String input)
     {
         //make input proper case before searching database
@@ -156,4 +188,18 @@ public class SubSearch extends Fragment{
         taskHistory.execute("add_hist",input,ft.format(dNow));
 
     }
+    private int getSharedfontSize() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        int szText = Integer.parseInt(sharedPreferences.getString("textsize_list", "-1"));
+        switch (szText) {
+            case -1:
+                // return default text size
+                int szdefault = 14;
+                return szdefault;
+            default:
+                // using the int array from Main Activity
+                return MainActivity.fSize[szText];
+
+        }
+    };
 }

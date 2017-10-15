@@ -1,6 +1,8 @@
 package com.example.mnjru.tabbed_1828_dictionary;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -36,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
      */
     private ViewPager mViewPager;
 
+    public final static int[] fSize = {12,16,20};
+
+    public FloatingActionButton fab;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,11 +59,11 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "This is the Main Activity", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
@@ -142,4 +147,8 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
     }
+
+
 }
+
+

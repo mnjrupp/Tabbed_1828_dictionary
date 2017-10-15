@@ -1,11 +1,14 @@
 package com.example.mnjru.tabbed_1828_dictionary;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.TextView;
 
@@ -28,6 +31,8 @@ public class DisplayTopicDef extends AppCompatActivity {
         Intent intent = getIntent();
         String topic = intent.getStringExtra(TOPIC);
         textViewDef = (TextView)findViewById(R.id.textViewDef);
+        // Get font size from preferences
+        textViewDef.setTextSize(TypedValue.COMPLEX_UNIT_SP, getSharedfontSize());
 
         // Set the title of the Activity to the topic
         if(!topic.isEmpty()) {
@@ -39,7 +44,7 @@ public class DisplayTopicDef extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "This is the definition page", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
@@ -63,4 +68,18 @@ public class DisplayTopicDef extends AppCompatActivity {
         taskHistory.execute("add_hist",input,ft.format(dNow));
 
     }
+    private int getSharedfontSize() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        int szText = Integer.parseInt(sharedPreferences.getString("textsize_list", "-1"));
+        switch (szText) {
+            case -1:
+                // return default text size
+                int szdefault = 14;
+                return szdefault;
+            default:
+                // using the int array from Main Activity
+                return MainActivity.fSize[szText];
+
+        }
+    };
 }
