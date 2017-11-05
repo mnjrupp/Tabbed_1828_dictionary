@@ -5,6 +5,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -58,6 +59,8 @@ public class SubHistory extends Fragment {
     public boolean onContextItemSelected(MenuItem item) {
 
         AdapterView.AdapterContextMenuInfo contextMenuInfo=(AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
+        // If header, we want to return false
+        if(contextMenuInfo.position==0){return false;}
         switch(item.getItemId()){
             case R.id.id_delete:
 
@@ -67,7 +70,7 @@ public class SubHistory extends Fragment {
                 historyDBHelper.deleteTopicHistory(topicName,db);
                 HistoryAdapter historyAdapter = ((HistoryAdapter)((HeaderViewListAdapter)listview.getAdapter()).getWrappedAdapter());
                 historyAdapter.remove(topicName);
-              //  historyAdapter.notifyDataSetChanged();
+
 
 
                 return true;
@@ -103,6 +106,8 @@ public class SubHistory extends Fragment {
                         .setAction("Action", null).show();
             }
         });
+        mainActivity.fab.setImageDrawable(ContextCompat.getDrawable(getContext(),R.drawable.ic_action_delete_all));
+        mainActivity.fab.show();
     }
     /*@Override
     public void onResume() {

@@ -42,6 +42,10 @@ public class SubAZ  extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_az,container,false);
         listView = (ListView) view.findViewById(R.id.list_az);
+
+        // Hide the FloatingActionButton
+
+
         // override the ArrayAdapter creation to set text size
         listAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line, items){
             @NonNull
@@ -55,6 +59,7 @@ public class SubAZ  extends Fragment {
                 return view;
             }
         };
+
         listView.setAdapter(listAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -85,6 +90,7 @@ public class SubAZ  extends Fragment {
         }
         // Set up a new OnClickListener for the FAB
         MainActivity mainActivity = (MainActivity)getActivity();
+        mainActivity.fab.hide();
         mainActivity.fab.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {

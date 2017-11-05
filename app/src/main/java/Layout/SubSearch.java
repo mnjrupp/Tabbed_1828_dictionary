@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.ScrollingMovementMethod;
@@ -169,6 +170,8 @@ public class SubSearch extends Fragment{
                         .setAction("Action", null).show();
             }
         });
+        mainActivity.fab.setImageDrawable(ContextCompat.getDrawable(getContext(),R.drawable.ic_copy_def));
+        mainActivity.fab.show();
     }
 
     public void getCompleteDefinition(String input)
