@@ -17,7 +17,6 @@
         android:scrollbarStyle="insideInset"
         android:scrollbars="vertical"
         android:textIsSelectable="true"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp" />
+        />
 
 </android.support.constraint.ConstraintLayout>

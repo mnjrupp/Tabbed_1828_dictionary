@@ -81,6 +81,14 @@ public class HistoryDBHelper extends SQLiteAssetHelper {
         }
         db.close();
     }
+    public void deleteHistoryAll(SQLiteDatabase db){
+        try {
+            db.delete(TABLE_NAME,null,null);
+        } catch (SQLException mSQLException) {
+            Log.e("HistoryDBHelper", "deleteHistoryAll >> " + mSQLException.toString());
+        }
+        db.close();
+    }
 
     public boolean topicExists(String topic,SQLiteDatabase db){
 

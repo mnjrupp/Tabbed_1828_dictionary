@@ -102,7 +102,14 @@ public class SubHistory extends Fragment {
         mainActivity.fab.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Snackbar.make(v, "This is the History Screen", Snackbar.LENGTH_LONG)
+                HistoryDBHelper historyDBHelper = new HistoryDBHelper(getContext());
+                SQLiteDatabase db = historyDBHelper.getWritableDatabase();
+                historyDBHelper.deleteHistoryAll(db);
+                HistoryAdapter historyAdapter = ((HistoryAdapter)((HeaderViewListAdapter)listview.getAdapter()).getWrappedAdapter());
+                historyAdapter.clear();
+                historyAdapter.notifyDataSetChanged();
+                //listview.refreshDrawableState();
+                Snackbar.make(v, "History cleared out", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
