@@ -47,7 +47,7 @@ public class SubAZ  extends Fragment {
 
 
         // override the ArrayAdapter creation to set text size
-        listAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line, items){
+        listAdapter = new ArrayAdapter<String>(getContext(), R.layout.custom_list_item,android.R.id.text1, items){
             @NonNull
             @Override
             public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {

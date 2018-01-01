@@ -8,12 +8,14 @@
     android:padding="@dimen/appbar_padding_top">
 
     <TextView
+        style="?textview"
         android:id="@+id/text_topic"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="Topic" />
 
     <TextView
+        style="?textview"
         android:id="@+id/text_last_accessed"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -21,6 +23,7 @@
         android:text="accessed Date" />
 
     <TextView
+        style="?textview"
         android:id="@+id/text_count"
         android:layout_width="150dp"
         android:layout_height="wrap_content"

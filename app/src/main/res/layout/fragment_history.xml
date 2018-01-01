@@ -9,6 +9,7 @@
     tools:context="com.example.mnjru.tabbed_1828_dictionary.MainActivity">
 
     <ListView
+        style="?list"
         android:id="@+id/list_history"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

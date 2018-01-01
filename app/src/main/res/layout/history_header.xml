@@ -4,18 +4,18 @@
     android:layout_height="match_parent">
 
     <TextView
+        style="?list_header"
         android:id="@+id/texttopicname"
         android:layout_width="109dp"
         android:layout_height="wrap_content"
         android:text="Topic"
-        android:textColor="@android:color/black"
-        android:textStyle="bold"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"/>
 
     <TextView
+        style="?list_header"
         android:id="@+id/texttopicdte"
         android:layout_width="109dp"
         android:layout_height="wrap_content"
@@ -24,10 +24,10 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
         android:text="Last Accessed"
-        android:textColor="@android:color/black"
-        android:textStyle="bold" />
+       />
 
     <TextView
+        style="?list_header"
         android:id="@+id/texttopiccount"
         android:layout_width="75dp"
         android:layout_height="wrap_content"
@@ -37,6 +37,5 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
         android:text="Count"
-        android:textColor="@android:color/black"
-        android:textStyle="bold" />
+        />
 </RelativeLayout>

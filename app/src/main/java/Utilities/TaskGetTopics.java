@@ -82,7 +82,7 @@ public class TaskGetTopics extends AsyncTask<String,String,String> {
 
     @Override
     protected void onPostExecute(String result) {
-        topicAdapter = new ArrayAdapter<String>(ctx, android.R.layout.simple_dropdown_item_1line, list) {
+        topicAdapter = new ArrayAdapter<String>(ctx,R.layout.custom_list_item,android.R.id.text1 , list) {
             @NonNull
             @Override
             public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {

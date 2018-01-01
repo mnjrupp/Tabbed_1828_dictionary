@@ -17,8 +17,11 @@
         <item name="button">@style/button_dk</item>
         <item name="spinner">@style/spinner_dk</item>
         <item name="actionBarStyle">@style/action_bar_dk</item>
-        <item name="list">@style/ListView</item>
+        <item name="list">@style/ListView_dk</item>
+        <item name="list_header">@style/ListView_header_dk</item>
         <item name="textview">@style/TextView_dk</item>
+        <item name="autotextview">@style/AutoTextView_dk</item>
+        <item name="header">@style/Fragment_header_dk</item>
 
     </style>
 
@@ -105,5 +108,23 @@
         <item name="android:background">#07000000</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:padding">@dimen/textview_padding</item>
+    </style>
+    <style name="ListView_dk" parent="@android:style/Widget.ListView">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:divider">@android:color/darker_gray</item>
+        <item name="android:cacheColorHint">@android:color/transparent</item>
+    </style>
+    <style name="ListView_header_dk">
+        <item name="android:textColor">#ff009688</item>
+    </style>
+    <style name="AutoTextView_dk">
+        <item name="android:background">@drawable/border_style</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    <style name="Fragment_header_dk"
+        parent="@android:style/TextAppearance">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">20sp</item>
     </style>
 </resources>
