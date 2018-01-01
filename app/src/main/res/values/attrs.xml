@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="pageBackground" format="reference" />
+    <attr name="textSubheader" format="reference" />
+    <attr name="textLarge" format="reference" />
+    <attr name="textRegular" format="reference" />
+    <attr name="background" format="reference" />
+    <attr name="button" format="reference" />
+    <attr name="spinner" format="reference" />
+    <attr name="list" format="reference"/>
+    <attr name="list_header" format="reference"/>
+    <attr name="textview" format="reference"/>
+    <attr name="autotextview" format="reference"/>
+    <attr name="header" format="reference"/>
+</resources>
