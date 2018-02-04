@@ -30,7 +30,8 @@
         android:positiveButtonText="@null"
         android:title="@string/text_size_title" />
     <ListPreference
-        android:defaultValue="-1"
+        android:id="@+id/themelistpref"
+        android:defaultValue="0"
         android:entries="@array/pref_theme_list_titles"
         android:entryValues="@array/pref_theme_list_values"
         android:key="theme_list"

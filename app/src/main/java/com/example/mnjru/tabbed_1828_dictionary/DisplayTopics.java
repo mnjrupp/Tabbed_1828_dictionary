@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import Utilities.TaskGetTopics;
+import Utilities.ThemeUtility;
 
 import static java.security.AccessController.getContext;
 
@@ -24,10 +25,19 @@ public class DisplayTopics extends Activity {
     public final static String TOPIC = "topic";
     ListView listView;
     TaskGetTopics taskGetTopics;
-
+    private static int intTheme=0;
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Need to get the theme from preference and set before
+        // setContentView
+        intTheme = getSharedTheme();
+        if(ThemeApplication.currentPosition!=intTheme){
+            ThemeUtility.changetoTheme(this,intTheme);
+            ThemeApplication.currentPosition=intTheme;
+        }
+        ThemeUtility.onActivityCreateSetTheme(this);
+        // -----------------------------------------------
         setContentView(R.layout.activity_topics_alpha);
         Intent intent = getIntent();
         String alpha = intent.getStringExtra(ALPHA);
@@ -47,6 +57,15 @@ public class DisplayTopics extends Activity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        intTheme = getSharedTheme();
+        if(ThemeApplication.currentPosition!=intTheme){
+            ThemeUtility.changetoTheme(this,intTheme);
+            ThemeApplication.currentPosition=intTheme;
+        }
+    }
 
 
     public void updateAlpha(String alpha)
@@ -55,5 +74,11 @@ public class DisplayTopics extends Activity {
         taskGetTopics.execute("get_topics",alpha);
 
     }
+
+    private int getSharedTheme(){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        int szTheme = Integer.parseInt(sharedPreferences.getString("theme_list", "0"));
+        return szTheme;
+    };
 
 }

@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -22,7 +22,27 @@
         <item name="textview">@style/TextView_dk</item>
         <item name="autotextview">@style/AutoTextView_dk</item>
         <item name="header">@style/Fragment_header_dk</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
 
+    </style>
+
+    <style name="Theme_Material_Light" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="pageBackground">@style/page_background_wh</item>
+        <item name="textSubheader">@style/text_subheader_wh</item>
+        <item name="textLarge">@style/text_large_wh</item>
+        <item name="textRegular">@style/text_regular_wh</item>
+        <item name="background">@style/white_background_wh</item>
+        <item name="button">@style/button_wh</item>
+        <item name="spinner">@style/spinner_wh</item>
+        <item name="actionBarStyle">@style/action_bar_wh</item>
+        <item name="list">@style/ListView</item>
+        <item name="list_header">@style/ListView_header_wh</item>
+        <item name="textview">@style/TextView_wh</item>
+        <item name="autotextview">@style/AutoTextView_wh</item>
+        <item name="header">@style/Fragment_header_dk</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -30,10 +50,8 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme_Console_Dark.NoActionBar" parent="Theme_Console_Dark">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
+
+
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
@@ -41,6 +59,12 @@
 
     <style name="page_background_dk">
         <item name="android:background">@drawable/dark_grey_gradient_background</item>
+        <item name="android:paddingLeft">@dimen/activity_horizontal_padding</item>
+        <item name="android:paddingRight">@dimen/activity_horizontal_padding</item>
+    </style>
+
+    <style name="page_background_wh">
+        <item name="android:background">@drawable/white_gray_gradient_background</item>
         <item name="android:paddingLeft">@dimen/activity_horizontal_padding</item>
         <item name="android:paddingRight">@dimen/activity_horizontal_padding</item>
     </style>
@@ -68,8 +92,20 @@
         <item name="android:textSize">@dimen/text_regular_text_size</item>
     </style>
 
+    <style name="text_regular_wh">
+        <item name="android:textColor">@android:color/background_dark</item>
+        <item name="android:textSize">@dimen/text_regular_text_size</item>
+    </style>
+
     <style name="white_background_dk">
         <item name="android:background">@android:drawable/dialog_holo_dark_frame</item>
+        <item name="android:layout_marginTop">@dimen/card_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/card_margin_top</item>
+        <item name="android:padding">@dimen/white_background_padding</item>
+    </style>
+
+    <style name="white_background_wh">
+        <item name="android:background">@android:drawable/dialog_holo_light_frame</item>
         <item name="android:layout_marginTop">@dimen/card_margin_top</item>
         <item name="android:layout_marginBottom">@dimen/card_margin_top</item>
         <item name="android:padding">@dimen/white_background_padding</item>
@@ -80,9 +116,18 @@
         <item name="android:layout_marginTop">@dimen/view_margin</item>
     </style>
 
+    <style name="button_wh" parent="text_large_wh">
+        <item name="android:background">@drawable/button_wh</item>
+        <item name="android:layout_marginTop">@dimen/view_margin</item>
+    </style>
+
     <style name="spinner_dk">
         <item name="android:background">@drawable/spinner_dk_background</item>
         <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="spinner_wh">
+        <item name="android:background">@drawable/spinner_wh_background</item>
     </style>
 
     <style name="ActionBar_dk"
@@ -97,6 +142,12 @@
         <item name="android:titleTextStyle">@style/ActionBar_dk</item>
         <item name="titleTextStyle">@style/ActionBar_dk</item>
     </style>
+
+    <style name="action_bar_wh" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@color/actionbar_bg_wh</item>
+        <item name="background">@color/actionbar_bg_wh</item>
+    </style>
+
     <style name="ListView" parent="@android:style/Widget.ListView">
         <item name="android:background">@color/light_grey</item>
         <item name="android:cacheColorHint">@android:color/transparent</item>
@@ -109,6 +160,10 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:padding">@dimen/textview_padding</item>
     </style>
+    <style name="TextView_wh" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:padding">@dimen/textview_padding</item>
+    </style>
     <style name="ListView_dk" parent="@android:style/Widget.ListView">
         <item name="android:textColor">@android:color/white</item>
         <item name="android:divider">@android:color/darker_gray</item>
@@ -117,14 +172,43 @@
     <style name="ListView_header_dk">
         <item name="android:textColor">#ff009688</item>
     </style>
+    <style name="ListView_header_wh">
+        <item name="android:textColor">@android:color/background_dark</item>
+    </style>
     <style name="AutoTextView_dk">
         <item name="android:background">@drawable/border_style</item>
         <item name="android:textColor">@android:color/white</item>
+    </style>
+    <style name="AutoTextView_wh">
+        <item name="android:background">@drawable/border_style</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
     <style name="Fragment_header_dk"
         parent="@android:style/TextAppearance">
         <item name="android:background">@android:color/transparent</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="text_subheader_wh">
+        <item name="android:textColor">#000</item>
+        <item name="android:textSize">@dimen/text_subheader_text_size</item>
+        <item name="android:shadowDy">1.0</item>
+        <item name="android:shadowRadius">1</item>
+        <item name="android:shadowColor">#000</item>
+    </style>
+    <style name="text_large_wh">
+        <item name="android:textColor">@android:color/background_dark</item>
+        <item name="android:textSize">@dimen/text_large_text_size</item>
+        <item name="android:shadowDy">1.0</item>
+        <item name="android:shadowRadius">1</item>
+        <item name="android:shadowColor">#888</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">@dimen/text_large_margin_top</item>
+    </style>
+    <color name="actionbar_bg_wh">#AFAFAF</color>
+
+    <style name="PreferencesTheme" parent="android:Theme.Light">
+        <item name="android:background">#dad7d7</item>
     </style>
 </resources>

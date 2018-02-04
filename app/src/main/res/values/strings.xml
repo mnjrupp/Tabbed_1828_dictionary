@@ -42,16 +42,16 @@
 
     <string-array name="pref_theme_list_titles">
         <item>Default</item>
-        <item>Night</item>
         <item>Silk</item>
-        <item>Gothic</item>
+        <item>Night</item>
+        <item>Blue</item>
     </string-array>
 
     <string-array name="pref_theme_list_values">
-        <item>-1</item>
         <item>0</item>
         <item>1</item>
         <item>2</item>
+        <item>3</item>
     </string-array>
     <!-- Example settings for Data & Sync -->
     <string name="pref_header_data_sync">Data &amp; sync</string>

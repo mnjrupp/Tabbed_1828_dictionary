@@ -18,9 +18,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
 
 
 import Layout.*;
+import Utilities.ThemeUtility;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,12 +41,22 @@ public class MainActivity extends AppCompatActivity {
      */
     private ViewPager mViewPager;
 
+    private static int intTheme=0;
     public final static int[] fSize = {12,16,20};
 
     public FloatingActionButton fab;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Need to get the theme from preference and set before
+        // setContentView
+        intTheme = getSharedTheme();
+        if(ThemeApplication.currentPosition!=intTheme){
+            ThemeUtility.changetoTheme(this,intTheme);
+            ThemeApplication.currentPosition=intTheme;
+        }
+        ThemeUtility.onActivityCreateSetTheme(this);
+
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -73,6 +85,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        intTheme = getSharedTheme();
+        if(ThemeApplication.currentPosition!=intTheme){
+            ThemeUtility.changetoTheme(this,intTheme);
+            ThemeApplication.currentPosition=intTheme;
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -151,6 +173,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+ private int getSharedTheme(){
+     SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+     int szTheme = Integer.parseInt(sharedPreferences.getString("theme_list", "0"));
+     return szTheme;
+ }
 
 }
 

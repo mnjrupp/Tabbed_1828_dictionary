@@ -17,14 +17,27 @@ import java.util.Date;
 
 import Utilities.DicDatabaseHelper;
 import Utilities.TaskHistory;
+import Utilities.ThemeUtility;
 
 public class DisplayTopicDef extends AppCompatActivity {
 
+    private static int intTheme=0;
     public final static String TOPIC = "topic";
     TextView textViewDef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Need to get the theme from preference and set before
+        // setContentView
+        intTheme = getSharedTheme();
+        if(ThemeApplication.currentPosition!=intTheme){
+            ThemeUtility.changetoTheme(this,intTheme);
+            ThemeApplication.currentPosition=intTheme;
+        }
+        ThemeUtility.onActivityCreateSetTheme(this);
+        // -----------------------------------------------
+
         setContentView(R.layout.activity_display_topic_def);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -49,6 +62,16 @@ public class DisplayTopicDef extends AppCompatActivity {
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        intTheme = getSharedTheme();
+        if(ThemeApplication.currentPosition!=intTheme){
+            ThemeUtility.changetoTheme(this,intTheme);
+            ThemeApplication.currentPosition=intTheme;
+        }
     }
 
     private void getCompleteDefinition(String input)
@@ -81,5 +104,11 @@ public class DisplayTopicDef extends AppCompatActivity {
                 return MainActivity.fSize[szText];
 
         }
+    };
+
+    private int getSharedTheme(){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        int szTheme = Integer.parseInt(sharedPreferences.getString("theme_list", "0"));
+        return szTheme;
     };
 }

@@ -12,7 +12,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme_Console_Dark.NoActionBar">
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,7 +23,7 @@
             android:name=".DisplayTopics"
             android:label="@string/app_name"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/Theme_Console_Dark.NoActionBar">
+           >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
@@ -32,7 +32,7 @@
             android:name=".DisplayTopicDef"
             android:label="@string/title_activity_display_topic_def"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/Theme_Console_Dark.NoActionBar">
+            >
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
