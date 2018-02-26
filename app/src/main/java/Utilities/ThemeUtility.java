@@ -38,10 +38,10 @@ public class ThemeUtility {
                 activity.setTheme(R.style.Theme_Console_Dark);
                 break;
             case THEME_BLUE_LIGHT:
-                //activity.setTheme(R.style.Theme_Blue_lite);
+                activity.setTheme(R.style.Theme_Blue_lite);
                 break;
             case THEME_YELLOW_OLD:
-                //activity.setTheme(R.style.Theme_Yellow_old);
+                activity.setTheme(R.style.Theme_Yellow_old);
         }
     }
 }
