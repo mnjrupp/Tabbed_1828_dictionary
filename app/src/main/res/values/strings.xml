@@ -44,8 +44,8 @@
         <item>Default</item>
         <item>Silk</item>
         <item>Night</item>
-        <item>Blue</item>
-        <item>Yellow</item>
+        <item>Sky</item>
+        <item>Parchment</item>
     </string-array>
 
     <string-array name="pref_theme_list_values">
