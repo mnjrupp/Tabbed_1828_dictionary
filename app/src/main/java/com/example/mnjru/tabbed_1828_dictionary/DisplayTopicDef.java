@@ -15,6 +15,7 @@ import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import Utilities.ClipboardUtil;
 import Utilities.DicDatabaseHelper;
 import Utilities.TaskHistory;
 import Utilities.ThemeUtility;
@@ -57,7 +58,9 @@ public class DisplayTopicDef extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "This is the definition page", Snackbar.LENGTH_LONG)
+                ClipboardUtil cm = new ClipboardUtil();
+                cm.copyToClipboard(getApplicationContext(),textViewDef.getText().toString());
+                Snackbar.make(view, "Copied to clipboard", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });

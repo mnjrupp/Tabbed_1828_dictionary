@@ -33,7 +33,7 @@ import java.util.Date;
 
 import Utilities.DicDatabaseHelper;
 import Utilities.TaskHistory;
-
+import Utilities.ClipboardUtil;
 /**
  * Created by mnjru on 5/21/2017.
  */
@@ -166,7 +166,9 @@ public class SubSearch extends Fragment{
         mainActivity.fab.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Snackbar.make(v, "This is the Search Screen", Snackbar.LENGTH_LONG)
+                ClipboardUtil cm = new ClipboardUtil();
+                cm.copyToClipboard(context,txtview.getText().toString());
+                Snackbar.make(v, "Copied to clipboard", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
