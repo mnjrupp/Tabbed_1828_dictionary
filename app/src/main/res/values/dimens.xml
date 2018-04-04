@@ -15,5 +15,5 @@
     <dimen name="text_large">22dp</dimen>
     <dimen name="card_margin_top">40dp</dimen>
     <dimen name="white_background_padding">20dp</dimen>
-    <dimen name="textview_padding">1dp</dimen>
+    <dimen name="textview_padding">5dp</dimen>
 </resources>

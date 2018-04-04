@@ -6,6 +6,9 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:dialogTheme">@style/DialogStyle</item>
+        <item name="android:alertDialogTheme">@style/DialogStyle</item>
+        <item name="textview">@style/TextView_wh</item>
     </style>
     
     <style name="Theme_Console_Dark" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -40,15 +43,15 @@
         <item name="list_header">@style/ListView_header_wh</item>
         <item name="textview">@style/TextView_wh</item>
         <item name="autotextview">@style/AutoTextView_wh</item>
-        <item name="header">@style/Fragment_header_dk</item>
+        <item name="header">@style/Fragment_header_light</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
     <style name="Theme_Blue_lite" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Define styles for YOUR_CUSTOM_THEME here. -->
-        <item name="colorPrimary">@drawable/blue_gradient_primary</item>
-        <item name="colorPrimaryDark">#871bd4</item>
+        <item name="colorPrimary">@android:color/holo_blue_light</item>
+        <item name="colorPrimaryDark">@android:color/holo_blue_dark</item>
         <item name="colorAccent">#cbcad7</item>
         <item name="pageBackground">@style/page_background_blue</item>
         <item name="textSubheader">@style/text_subheader_dk</item>
@@ -59,19 +62,21 @@
         <item name="spinner">@style/spinner_dk</item>
         <item name="textview">@style/TextView_wh</item>
         <item name="autotextview">@style/AutoTextView_wh</item>
+        <item name="header">@style/Fragment_header_blue</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
     <style name="Theme_Yellow_old" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@drawable/yellow_gradient_primary</item>
+        <item name="colorPrimary">#e6c45e</item>
         <item name="colorPrimaryDark">#dcb341</item>
         <item name="colorAccent">#06031a</item>
         <item name="pageBackground">@style/page_background_ye</item>
-        <item name="android:textColor">@android:color/primary_text_light</item>
+        <!--<item name="android:textColor">@android:color/primary_text_light</item>-->
         <item name="list_header">@style/ListView_header_wh</item>
         <item name="autotextview">@style/AutoTextView_wh</item>
         <item name="textview">@style/TextView_wh</item>
+        <item name="header">@style/Fragment_header_yellow</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
@@ -80,7 +85,9 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-
+    <style name="DialogStyle" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
 
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
@@ -234,6 +241,27 @@
     <style name="Fragment_header_dk"
         parent="@android:style/TextAppearance">
         <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="Fragment_header_light"
+        parent="@android:style/TextAppearance">
+        <item name="android:background">@color/actionbar_bg_dk</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="Fragment_header_blue"
+        parent="@android:style/TextAppearance">
+        <item name="android:background">@android:color/holo_blue_dark</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="Fragment_header_yellow"
+        parent="@android:style/TextAppearance">
+        <item name="android:background">@drawable/yellow_gradient_primary</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">20sp</item>
     </style>

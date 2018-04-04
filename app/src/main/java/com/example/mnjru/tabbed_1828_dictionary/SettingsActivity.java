@@ -3,6 +3,7 @@ package com.example.mnjru.tabbed_1828_dictionary;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,6 +18,8 @@ import android.support.v4.app.NavUtils;
 
 import java.util.List;
 
+import Utilities.ThemeUtility;
+
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
@@ -30,6 +33,7 @@ import java.util.List;
  * API Guide</a> for more information on developing a Settings UI.
  */
 public class SettingsActivity extends AppCompatPreferenceActivity {
+    private static int intTheme=0;
     /**
      * A preference value change listener that updates the preference's summary
      * to reflect its new value.
@@ -93,6 +97,15 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Need to get the theme from preference and set before
+        // setContentView
+        intTheme = getSharedTheme();
+        if(ThemeApplication.currentPosition!=intTheme){
+            ThemeUtility.changetoTheme(this,intTheme);
+            ThemeApplication.currentPosition=intTheme;
+        }
+        ThemeUtility.onActivityCreateSetTheme(this);
+        //--------------------------------------------------------------
         setContentView(R.layout.preferences_container);
         setupActionBar();
         GeneralPreferenceFragment generalPreferenceFragment = new GeneralPreferenceFragment();
@@ -155,6 +168,12 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 //|| NotificationPreferenceFragment.class.getName().equals(fragmentName);
     }
 
+    private int getSharedTheme(){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        int szTheme = Integer.parseInt(sharedPreferences.getString("theme_list", "0"));
+        return szTheme;
+    };
+
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static class GeneralPreferenceFragment extends PreferenceFragment {
@@ -169,6 +188,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
+
             addPreferencesFromResource(R.xml.pref_general);
             setHasOptionsMenu(true);
 

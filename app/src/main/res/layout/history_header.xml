@@ -17,7 +17,7 @@
     <TextView
         style="?list_header"
         android:id="@+id/texttopicdte"
-        android:layout_width="109dp"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/texttopicname"
@@ -34,7 +34,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@id/texttopicdte"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="25dp"
         android:layout_marginTop="10dp"
         android:text="Count"
         />

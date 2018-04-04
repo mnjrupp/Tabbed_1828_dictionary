@@ -1,22 +1,23 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-<PreferenceCategory
-    android:title="General">
-    <ListPreference
-        android:defaultValue="-1"
-        android:entries="@array/pref_text_list_titles"
-        android:entryValues="@array/pref_text_list_values"
-        android:key="textsize_list"
-        android:negativeButtonText="@null"
-        android:positiveButtonText="@null"
-        android:title="@string/text_size_title" />
-    <ListPreference
-        android:id="@+id/themelistpref"
-        android:defaultValue="0"
-        android:entries="@array/pref_theme_list_titles"
-        android:entryValues="@array/pref_theme_list_values"
-        android:key="theme_list"
-        android:negativeButtonText="@null"
-        android:positiveButtonText="@null"
-        android:title="@string/pref_theme_title" />
-</PreferenceCategory>
+    <PreferenceCategory android:title="General">
+        <ListPreference
+
+            android:defaultValue="-1"
+            android:entries="@array/pref_text_list_titles"
+            android:entryValues="@array/pref_text_list_values"
+            android:key="textsize_list"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="@string/text_size_title" />
+        <ListPreference
+
+            android:id="@+id/themelistpref"
+            android:defaultValue="0"
+            android:entries="@array/pref_theme_list_titles"
+            android:entryValues="@array/pref_theme_list_values"
+            android:key="theme_list"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="@string/pref_theme_title" />
+    </PreferenceCategory>
 </PreferenceScreen>
