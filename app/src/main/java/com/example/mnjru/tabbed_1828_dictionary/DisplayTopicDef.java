@@ -89,7 +89,7 @@ public class DisplayTopicDef extends AppCompatActivity {
 
         Date dNow = new Date( );
         SimpleDateFormat ft =
-                new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a");
+                new SimpleDateFormat("E yyyy.MM.dd");
         TaskHistory taskHistory = new TaskHistory(this);
         taskHistory.execute("add_hist",input,ft.format(dNow));
 

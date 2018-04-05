@@ -10,7 +10,7 @@
     <TextView
         style="?textview"
         android:id="@+id/text_topic"
-        android:layout_width="150dp"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:text="Topic" />
 
@@ -25,7 +25,7 @@
     <TextView
         style="?textview"
         android:id="@+id/text_count"
-        android:layout_width="150dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/text_last_accessed"
         android:text="count" />

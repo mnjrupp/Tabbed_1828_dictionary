@@ -188,7 +188,7 @@ public class SubSearch extends Fragment{
 
         Date dNow = new Date( );
         SimpleDateFormat ft =
-                new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a");
+                new SimpleDateFormat("E yyyy.MM.dd");
         TaskHistory taskHistory = new TaskHistory(getContext());
         taskHistory.execute("add_hist",input,ft.format(dNow));
 

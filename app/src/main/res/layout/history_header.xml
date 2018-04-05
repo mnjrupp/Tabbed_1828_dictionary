@@ -11,7 +11,7 @@
         android:text="Topic"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"/>
 
     <TextView
@@ -21,21 +21,19 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/texttopicname"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:text="Last Accessed"
        />
 
     <TextView
-        style="?list_header"
         android:id="@+id/texttopiccount"
-        android:layout_width="75dp"
+        style="?list_header"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@id/texttopicdte"
-        android:layout_marginLeft="25dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:text="Count"
-        />
+        android:layout_toRightOf="@id/texttopicdte"
+        android:text="Count" />
 </RelativeLayout>
