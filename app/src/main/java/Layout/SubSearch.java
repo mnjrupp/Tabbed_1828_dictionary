@@ -181,17 +181,21 @@ public class SubSearch extends Fragment{
         //make input proper case before searching database
         DicDatabaseHelper db = new DicDatabaseHelper(context);
         // query the database based on the user input
-        txtview.setText(db.getDefnition(input));
-        // Scroll the TextView to the top
-        txtview.scrollTo(0, 0);
+        String definition = db.getDefnition(input);
         db.close();
+        // if empty, we don't want to proceed
+        if(!definition.isEmpty()) {
+            txtview.setText(definition);
+            // Scroll the TextView to the top
+            txtview.scrollTo(0, 0);
 
-        Date dNow = new Date( );
-        SimpleDateFormat ft =
-                new SimpleDateFormat("E yyyy.MM.dd");
-        TaskHistory taskHistory = new TaskHistory(getContext());
-        taskHistory.execute("add_hist",input,ft.format(dNow));
 
+            Date dNow = new Date();
+            SimpleDateFormat ft =
+                    new SimpleDateFormat("E yyyy.MM.dd");
+            TaskHistory taskHistory = new TaskHistory(getContext());
+            taskHistory.execute("add_hist", input, ft.format(dNow));
+        }
     }
     private int getSharedfontSize() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);

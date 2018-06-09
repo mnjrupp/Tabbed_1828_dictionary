@@ -94,7 +94,7 @@ public class SubHistory extends Fragment {
         if(!getUserVisibleHint()){
             return;
         }
-        Log.e("DEBUG","onResume of SubHistory");
+        //Log.e("DEBUG","onResume of SubHistory");
         TaskHistory taskHistory = new TaskHistory(getContext());
         taskHistory.execute("get_hist");
         // Set up a new OnClickListener for the FAB
@@ -126,7 +126,7 @@ public class SubHistory extends Fragment {
 
     @Override
     public void onPause() {
-        Log.e("DEBUG","onPause of SubHistory");
+        //Log.e("DEBUG","onPause of SubHistory");
         super.onPause();
     }
 }

@@ -79,20 +79,24 @@ public class DisplayTopicDef extends AppCompatActivity {
 
     private void getCompleteDefinition(String input)
     {
-        //make input proper case before searching database
+
         DicDatabaseHelper db = new DicDatabaseHelper(this);
         // query the database based on the user input
-        textViewDef.setText(db.getDefnition(input));
-        // Scroll the TextView to the top
-        textViewDef.scrollTo(0, 0);
+        String definition = db.getDefnition(input);
         db.close();
+        // if empty, we don't want to proceed
+        if(!definition.isEmpty()) {
+            textViewDef.setText(definition);
+            // Scroll the TextView to the top
+            textViewDef.scrollTo(0, 0);
 
-        Date dNow = new Date( );
-        SimpleDateFormat ft =
-                new SimpleDateFormat("E yyyy.MM.dd");
-        TaskHistory taskHistory = new TaskHistory(this);
-        taskHistory.execute("add_hist",input,ft.format(dNow));
 
+            Date dNow = new Date();
+            SimpleDateFormat ft =
+                    new SimpleDateFormat("E yyyy.MM.dd");
+            TaskHistory taskHistory = new TaskHistory(this);
+            taskHistory.execute("add_hist", input, ft.format(dNow));
+        }
     }
     private int getSharedfontSize() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
