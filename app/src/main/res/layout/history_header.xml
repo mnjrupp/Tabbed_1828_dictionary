@@ -1,39 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
-        style="?list_header"
         android:id="@+id/texttopicname"
-        android:layout_width="109dp"
-        android:layout_height="wrap_content"
-        android:text="Topic"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"/>
-
-    <TextView
         style="?list_header"
-        android:id="@+id/texttopicdte"
-        android:layout_width="110dp"
+        android:layout_width="84dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/texttopicname"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
+        android:text="Topic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/texttopicdte"
+        style="?list_header"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
         android:text="Last Accessed"
-       />
+        app:layout_constraintLeft_toRightOf="@+id/texttopicname"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/texttopiccount"
         style="?list_header"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="10dp"
+        android:layout_width="142dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@id/texttopicdte"
-        android:text="Count" />
-</RelativeLayout>
+        android:text="Count"
+        app:layout_constraintStart_toEndOf="@+id/texttopicdte"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>

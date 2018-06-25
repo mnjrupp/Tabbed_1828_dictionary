@@ -1,32 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    android:padding="@dimen/appbar_padding_top">
+    android:paddingTop="2dp"
+    android:id="@+id/relativeLayout">
 
     <TextView
-        style="?textview"
         android:id="@+id/text_topic"
-        android:layout_width="110dp"
+        style="?textview"
+        android:layout_width="128dp"
         android:layout_height="wrap_content"
-        android:text="Topic" />
+        android:text="Topic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        style="?textview"
         android:id="@+id/text_last_accessed"
-        android:layout_width="150dp"
+        style="?textview"
+        android:layout_width="139dp"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/text_topic"
-        android:text="accessed Date" />
+        android:text="accessed Date"
+        app:layout_constraintStart_toEndOf="@+id/text_topic"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        style="?textview"
         android:id="@+id/text_count"
-        android:layout_width="100dp"
+        style="?textview"
+        android:layout_width="77dp"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/text_last_accessed"
-        android:text="count" />
-</RelativeLayout>
+        android:text="count"
+        app:layout_constraintStart_toEndOf="@+id/text_last_accessed"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>
