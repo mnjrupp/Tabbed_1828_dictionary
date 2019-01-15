@@ -19,8 +19,8 @@ import android.widget.HeaderViewListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.mnjru.tabbed_1828_dictionary.MainActivity;
-import com.example.mnjru.tabbed_1828_dictionary.R;
+import com.mnjru.tabbed_1828_dictionary.MainActivity;
+import com.mnjru.tabbed_1828_dictionary.R;
 
 import Utilities.HistoryAdapter;
 import Utilities.HistoryDBHelper;

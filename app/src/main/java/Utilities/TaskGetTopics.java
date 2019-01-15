@@ -15,8 +15,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.mnjru.tabbed_1828_dictionary.MainActivity;
-import com.example.mnjru.tabbed_1828_dictionary.R;
+import com.mnjru.tabbed_1828_dictionary.MainActivity;
+import com.mnjru.tabbed_1828_dictionary.R;
 
 import java.util.ArrayList;
 import java.util.List;

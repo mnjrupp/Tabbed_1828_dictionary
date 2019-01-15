@@ -3,7 +3,7 @@ package Utilities;
 import android.app.Activity;
 import android.content.Intent;
 
-import com.example.mnjru.tabbed_1828_dictionary.R;
+import com.mnjru.tabbed_1828_dictionary.R;
 
 /**
  * Created by mnjru on 1/6/2018.

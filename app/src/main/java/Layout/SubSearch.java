@@ -25,8 +25,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.mnjru.tabbed_1828_dictionary.MainActivity;
-import com.example.mnjru.tabbed_1828_dictionary.R;
+import com.mnjru.tabbed_1828_dictionary.MainActivity;
+import com.mnjru.tabbed_1828_dictionary.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

@@ -21,7 +21,7 @@ public class DicDatabaseHelper extends SQLiteAssetHelper {
 	 // Database Name
     private static final String DATABASE_NAME = "awebster.db";
 	 // Database Version
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     // Database Column
     public static final String COLUMN_TOPIC = "Topic";
     

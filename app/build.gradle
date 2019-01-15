@@ -1,11 +1,19 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
+    signingConfigs {
+        config {
+            keyAlias 'key0'
+            keyPassword 'webster1828'
+            storeFile file('C:/Users/mnjru/Documents/workspace/android_projects/dictionary_keystore/dictionary.jks')
+            storePassword 'webster1828'
+        }
+    }
+    compileSdkVersion 26
     defaultConfig {
-        applicationId "com.example.mnjru.tabbed_1828_dictionary"
+        applicationId "com.mnjru.tabbed_1828_dictionary"
         minSdkVersion 18
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -15,12 +23,15 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
+    }
+    productFlavors {
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
