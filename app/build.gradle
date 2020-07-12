@@ -5,17 +5,17 @@ android {
         config {
             keyAlias 'key0'
             keyPassword 'webster1828'
-            storeFile file('C:/Users/mnjru/Documents/workspace/android_projects/dictionary_keystore/dictionary.jks')
+            storeFile file('C:/Users/mnjru/OneDrive/Documents/workspace/android_projects/dictionary_keystore/dictionary.jks')
             storePassword 'webster1828'
         }
     }
-    compileSdkVersion 26
+    compileSdkVersion 28
     defaultConfig {
         applicationId "com.mnjru.tabbed_1828_dictionary"
         minSdkVersion 18
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 28
+        versionCode 5
+        versionName "1.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -35,11 +35,11 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support:appcompat-v7:28.0.0'
+    compile 'com.android.support:design:28.0.0'
     compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:support-v4:25.3.1'
-    compile 'com.android.support:support-vector-drawable:25.3.1'
+    compile 'com.android.support:support-v4:28.0.0'
+    compile 'com.android.support:support-vector-drawable:28.0.0'
     testCompile 'junit:junit:4.12'
 }
