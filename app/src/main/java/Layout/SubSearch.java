@@ -182,6 +182,11 @@ public class SubSearch extends Fragment{
         DicDatabaseHelper db = new DicDatabaseHelper(context);
         // query the database based on the user input
         String definition = db.getDefnition(input);
+        //TODO
+        // Need to search definition for extra topic
+        // inside of format [ See *]
+        // using Regex to highlight in click link color (possibly blue)
+
         db.close();
         // if empty, we don't want to proceed
         if(!definition.isEmpty()) {
