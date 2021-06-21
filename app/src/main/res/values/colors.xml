@@ -5,4 +5,5 @@
     <color name="colorAccent">#ffde65</color>
     <color name="actionbar_bg_dk">#000000</color>
     <color name="light_grey">#cccccc</color>
+    <color name="clear">#00F44336</color>
 </resources>

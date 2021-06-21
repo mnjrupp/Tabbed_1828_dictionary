@@ -1,15 +1,13 @@
 package Layout;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.support.annotation.StringDef;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.annotation.StringDef;
+import androidx.fragment.app.Fragment;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,7 +21,7 @@ import com.mnjru.tabbed_1828_dictionary.DisplayTopics;
 import com.mnjru.tabbed_1828_dictionary.MainActivity;
 import com.mnjru.tabbed_1828_dictionary.R;
 
-import org.w3c.dom.Text;
+import static Utilities.KeyboardUtility.hideKeyboardFrom;
 
 /**
  * Created by mnjru on 5/21/2017.
@@ -42,8 +40,6 @@ public class SubAZ  extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_az,container,false);
         listView = (ListView) view.findViewById(R.id.list_az);
-
-        // Hide the FloatingActionButton
 
 
         // override the ArrayAdapter creation to set text size
@@ -90,14 +86,14 @@ public class SubAZ  extends Fragment {
         }
         // Set up a new OnClickListener for the FAB
         MainActivity mainActivity = (MainActivity)getActivity();
-        mainActivity.fab.hide();
-        mainActivity.fab.setOnClickListener(new View.OnClickListener(){
+       mainActivity.fab.hide();
+        /*mainActivity.fab.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Snackbar.make(v, "This is the Alpha Screen", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        });*/
     }
 
     private int getSharedfontSize(){

@@ -1,12 +1,12 @@
 package Layout;
 
 import android.database.sqlite.SQLiteDatabase;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.fragment.app.Fragment;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
-import android.util.Log;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
@@ -14,10 +14,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.HeaderViewListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.mnjru.tabbed_1828_dictionary.MainActivity;
 import com.mnjru.tabbed_1828_dictionary.R;
@@ -26,6 +24,8 @@ import Utilities.HistoryAdapter;
 import Utilities.HistoryDBHelper;
 import Utilities.TaskHistory;
 import Utilities.Topic;
+
+import static Utilities.KeyboardUtility.hideKeyboardFrom;
 
 /**
  * Created by mnjru on 5/21/2017.
