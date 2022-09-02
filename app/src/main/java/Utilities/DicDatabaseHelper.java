@@ -22,7 +22,7 @@ public class DicDatabaseHelper extends SQLiteAssetHelper {
     private static final String DATABASE_NAME = "awebster.db";
 	 // Database Version
 	// CHANGE: increment db version if file changed
-    private static final int DATABASE_VERSION = 6;
+    private static final int DATABASE_VERSION = 8;
     // Database Column
     public static final String COLUMN_TOPIC = "Topic";
     
@@ -35,7 +35,7 @@ public class DicDatabaseHelper extends SQLiteAssetHelper {
      		//super(context, DATABASE_NAME, context.getExternalFilesDir(null).getAbsolutePath(), null, DATABASE_VERSION);
 		// call this method to force a database overwrite if the version number
 		// is below a certain threshold:
-		setForcedUpgrade(6);
+		setForcedUpgrade(8);
     }
  
    

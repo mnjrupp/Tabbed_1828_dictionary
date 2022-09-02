@@ -162,13 +162,16 @@
     </style>
 
     <style name="button_dk" parent="text_large_dk">
-        <item name="android:background">@drawable/button_wh</item>
+        <!--<item name="android:background">@drawable/button_wh</item>-->
         <item name="android:layout_marginTop">@dimen/view_margin</item>
+        <item name="android:tint">@android:color/white</item>
+        <item name="android:fillColor">@android:color/white</item>
     </style>
 
     <style name="button_wh" parent="text_large_wh">
         <item name="android:background">@drawable/button_wh</item>
         <item name="android:layout_marginTop">@dimen/view_margin</item>
+
     </style>
 
     <style name="spinner_dk">
@@ -249,7 +252,7 @@
     <style name="Fragment_header_light"
         parent="@android:style/TextAppearance">
         <item name="android:background">@color/actionbar_bg_dk</item>
-        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">20sp</item>
     </style>
 
