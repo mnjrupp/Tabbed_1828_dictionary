@@ -170,7 +170,7 @@ public class SubSearch extends Fragment{
                         String topic = autoComplete.getText().toString();
                         getCompleteDefinition(topic);
                         // hide keyboard
-                        hideKeyboardFrom(getContext(),v);
+                        hideKeyboardFrom(getContext());
                         return true;
                     }
                     else{
@@ -188,7 +188,7 @@ public class SubSearch extends Fragment{
                             // TODO
                         }else{
                             //hideKeyboard
-                            hideKeyboardFrom(Objects.requireNonNull(getContext()),v);
+                            hideKeyboardFrom(requireContext());
                         }
                     }
                 }

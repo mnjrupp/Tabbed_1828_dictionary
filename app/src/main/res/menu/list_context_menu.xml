@@ -3,7 +3,10 @@
 <item
     android:id="@+id/id_delete"
     android:title="@string/context_delete">
+</item>
+<item
+    android:id="@+id/id_delete_all"
+    android:title="Delete All">
 
 </item>
-
 </menu>

@@ -22,20 +22,21 @@ public class DicDatabaseHelper extends SQLiteAssetHelper {
     private static final String DATABASE_NAME = "awebster.db";
 	 // Database Version
 	// CHANGE: increment db version if file changed
-    private static final int DATABASE_VERSION = 8;
+    private static final int DATABASE_VERSION = 12;
     // Database Column
     public static final String COLUMN_TOPIC = "Topic";
     
 	public DicDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);  
-     // you can use an alternate constructor to specify a database location 
-     		// (such as a folder on the sd card)
-     		// you must ensure that this folder is available and you have permission
-     		// to write to it
-     		//super(context, DATABASE_NAME, context.getExternalFilesDir(null).getAbsolutePath(), null, DATABASE_VERSION);
+     	// you can use an alternate constructor to specify a database location
+		// (such as a folder on the sd card)
+		// you must ensure that this folder is available and you have permission
+		// to write to it
+		//super(context, DATABASE_NAME, context.getExternalFilesDir(null).getAbsolutePath(), null, DATABASE_VERSION);
 		// call this method to force a database overwrite if the version number
 		// is below a certain threshold:
-		setForcedUpgrade(8);
+		// CHANGE: increment db version if file changed.
+		setForcedUpgrade(12);
     }
  
    

@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Tabbed_1828_dictionary.iml" filepath="$PROJECT_DIR$/Tabbed_1828_dictionary.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Tabbed_1828_dictionary.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Tabbed_1828_dictionary.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Tabbed_1828_dictionary.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Tabbed_1828_dictionary.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Tabbed_1828_dictionary.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Tabbed_1828_dictionary.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Tabbed_1828_dictionary.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Tabbed_1828_dictionary.app.unitTest.iml" />
     </modules>
   </component>
 </project>

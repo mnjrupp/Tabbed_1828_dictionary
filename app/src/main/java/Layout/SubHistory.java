@@ -33,6 +33,9 @@ import static Utilities.KeyboardUtility.hideKeyboardFrom;
 
 public class SubHistory extends Fragment {
     ListView listview;
+    HistoryDBHelper historyDBHelper;
+    HistoryAdapter historyAdapter;
+    SQLiteDatabase db;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,15 +68,22 @@ public class SubHistory extends Fragment {
             case R.id.id_delete:
 
                 String topicName = ((Topic)listview.getItemAtPosition(contextMenuInfo.position)).getTopic().toString();
-                HistoryDBHelper historyDBHelper = new HistoryDBHelper(getContext());
-                SQLiteDatabase db = historyDBHelper.getWritableDatabase();
+                historyDBHelper = new HistoryDBHelper(getContext());
+                db = historyDBHelper.getWritableDatabase();
                 historyDBHelper.deleteTopicHistory(topicName,db);
-                HistoryAdapter historyAdapter = ((HistoryAdapter)((HeaderViewListAdapter)listview.getAdapter()).getWrappedAdapter());
+                historyAdapter = ((HistoryAdapter)((HeaderViewListAdapter)listview.getAdapter()).getWrappedAdapter());
                 historyAdapter.remove(topicName);
-
-
-
                 return true;
+            case R.id.id_delete_all:
+                historyDBHelper = new HistoryDBHelper(getContext());
+                db = historyDBHelper.getWritableDatabase();
+                historyDBHelper.deleteHistoryAll(db);
+                historyAdapter = ((HistoryAdapter)((HeaderViewListAdapter)listview.getAdapter()).getWrappedAdapter());
+                historyAdapter.clear();
+                historyAdapter.notifyDataSetChanged();
+                //listview.refreshDrawableState();
+                Snackbar.make(getActivity().findViewById(R.id.list_history), "History cleared out", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             default:
                 return super.onContextItemSelected(item);
         }
@@ -94,11 +104,16 @@ public class SubHistory extends Fragment {
         if(!getUserVisibleHint()){
             return;
         }
+        // Hide keyboard
+        hideKeyboardFrom(getContext());
         //Log.e("DEBUG","onResume of SubHistory");
         TaskHistory taskHistory = new TaskHistory(getContext());
         taskHistory.execute("get_hist");
+        //TODO Remove Floating Toolbar for Delete history
+        // and move to settings page
+
         // Set up a new OnClickListener for the FAB
-        MainActivity mainActivity = (MainActivity)getActivity();
+       /* MainActivity mainActivity = (MainActivity)getActivity();
         mainActivity.fab.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -115,18 +130,14 @@ public class SubHistory extends Fragment {
         });
         mainActivity.fab.setImageDrawable(ContextCompat.getDrawable(getContext(),R.drawable.ic_action_delete_all));
         mainActivity.fab.show();
+        */
+
     }
-    /*@Override
-    public void onResume() {
-        Log.e("DEBUG","onResume of SubHistory");
-        TaskHistory taskHistory = new TaskHistory(getContext());
-        taskHistory.execute("get_hist");
-        super.onResume();
-    }*/
+
 
     @Override
     public void onPause() {
-        //Log.e("DEBUG","onPause of SubHistory");
+
         super.onPause();
     }
 }

@@ -7,7 +7,7 @@
     android:layout_margin="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     android:paddingTop="2dp"
-    android:id="@+id/relativeLayout">
+    android:id="@+id/constraintLayout">
 
     <TextView
         android:id="@+id/text_topic"
@@ -33,6 +33,7 @@
         android:layout_width="77dp"
         android:layout_height="wrap_content"
         android:text="count"
+        android:gravity="center"
         app:layout_constraintStart_toEndOf="@+id/text_last_accessed"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

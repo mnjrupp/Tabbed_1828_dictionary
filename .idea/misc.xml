@@ -1,4 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/mnjru/OneDrive/Documents/workspace/android_projects/Tabbed_1828_dictionary/app/src/main/res/drawable-xhdpi-v9/spinner_wh_background.xml" value="0.2814814814814815" />
+        <entry key="..\:/Users/mnjru/OneDrive/Documents/workspace/android_projects/Tabbed_1828_dictionary/app/src/main/res/drawable-xxhdpi/button_wh.xml" value="0.22760416666666666" />
+        <entry key="..\:/Users/mnjru/OneDrive/Documents/workspace/android_projects/Tabbed_1828_dictionary/app/src/main/res/drawable-xxhdpi/button_wh_normal.xml" value="0.22760416666666666" />
+        <entry key="..\:/Users/mnjru/OneDrive/Documents/workspace/android_projects/Tabbed_1828_dictionary/app/src/main/res/drawable/button_bkground.xml" value="0.196" />
+        <entry key="..\:/Users/mnjru/OneDrive/Documents/workspace/android_projects/Tabbed_1828_dictionary/app/src/main/res/drawable/ic_baseline_clear_24.xml" value="0.2861111111111111" />
+        <entry key="..\:/Users/mnjru/OneDrive/Documents/workspace/android_projects/Tabbed_1828_dictionary/app/src/main/res/drawable/ic_baseline_content_copy_24.xml" value="0.403125" />
+        <entry key="..\:/Users/mnjru/OneDrive/Documents/workspace/android_projects/Tabbed_1828_dictionary/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.403125" />
+        <entry key="..\:/Users/mnjru/OneDrive/Documents/workspace/android_projects/Tabbed_1828_dictionary/app/src/main/res/layout/activity_display_topic_def.xml" value="0.21145833333333333" />
+        <entry key="..\:/Users/mnjru/OneDrive/Documents/workspace/android_projects/Tabbed_1828_dictionary/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/mnjru/OneDrive/Documents/workspace/android_projects/Tabbed_1828_dictionary/app/src/main/res/layout/activity_topics_alpha.xml" value="0.34103260869565216" />
+        <entry key="..\:/Users/mnjru/OneDrive/Documents/workspace/android_projects/Tabbed_1828_dictionary/app/src/main/res/layout/content_display_topic_def.xml" value="0.21145833333333333" />
+        <entry key="..\:/Users/mnjru/OneDrive/Documents/workspace/android_projects/Tabbed_1828_dictionary/app/src/main/res/layout/custom_list_item.xml" value="0.34103260869565216" />
+        <entry key="..\:/Users/mnjru/OneDrive/Documents/workspace/android_projects/Tabbed_1828_dictionary/app/src/main/res/layout/fragment_az.xml" value="0.1" />
+        <entry key="..\:/Users/mnjru/OneDrive/Documents/workspace/android_projects/Tabbed_1828_dictionary/app/src/main/res/layout/fragment_history.xml" value="0.266304347826087" />
+        <entry key="..\:/Users/mnjru/OneDrive/Documents/workspace/android_projects/Tabbed_1828_dictionary/app/src/main/res/layout/fragment_search.xml" value="0.34103260869565216" />
+        <entry key="..\:/Users/mnjru/OneDrive/Documents/workspace/android_projects/Tabbed_1828_dictionary/app/src/main/res/layout/history_header.xml" value="0.34103260869565216" />
+        <entry key="..\:/Users/mnjru/OneDrive/Documents/workspace/android_projects/Tabbed_1828_dictionary/app/src/main/res/layout/preferences_container.xml" value="0.34103260869565216" />
+        <entry key="..\:/Users/mnjru/OneDrive/Documents/workspace/android_projects/Tabbed_1828_dictionary/app/src/main/res/layout/raw_history_row.xml" value="0.34103260869565216" />
+        <entry key="..\:/Users/mnjru/OneDrive/Documents/workspace/android_projects/Tabbed_1828_dictionary/app/src/main/res/menu/list_context_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/mnjru/OneDrive/Documents/workspace/android_projects/Tabbed_1828_dictionary/app/src/main/res/menu/menu_drawer.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/mnjru/OneDrive/Documents/workspace/android_projects/Tabbed_1828_dictionary/app/src/main/res/menu/menu_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/mnjru/OneDrive/Documents/workspace/android_projects/Tabbed_1828_dictionary/app/src/release/res/drawable/ic_baseline_search_24.xml" value="0.2861111111111111" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK" />
 </project>
