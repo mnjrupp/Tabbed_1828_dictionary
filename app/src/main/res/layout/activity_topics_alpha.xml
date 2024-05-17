@@ -13,6 +13,12 @@
         android:text=""
         android:textAlignment="center"
         android:textStyle="bold" />
+    <EditText
+        style="?autotextview"
+        android:id="@+id/alphaSearch"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        />
 
     <ListView
         style="?list"

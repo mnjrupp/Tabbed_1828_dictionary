@@ -8,10 +8,14 @@ import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -28,6 +32,7 @@ import java.util.List;
 public class TaskGetTopics extends AsyncTask<String,String,String> {
 
     private Context ctx;
+    private EditText etSearch;
     ArrayAdapter<String> topicAdapter;
     Activity activity;
     ListView listView;
@@ -53,6 +58,7 @@ public class TaskGetTopics extends AsyncTask<String,String,String> {
 
             listView = (ListView) activity.findViewById(R.id.list_topics_alpha);
             textView = (TextView) activity.findViewById(R.id.text_alpha);
+            etSearch = (EditText) activity.findViewById(R.id.alphaSearch);
             String alpha = params[1];
             dicDatabaseHelper.getReadableDatabase();
             cursor = dicDatabaseHelper.getTopicsbyAlpha(alpha);
@@ -88,6 +94,7 @@ public class TaskGetTopics extends AsyncTask<String,String,String> {
             public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
                 TextView tv = (TextView) view.findViewById(android.R.id.text1);
+
                 // Set the text size from Preference
                 tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, getSharedfontSize());
                 // Return the view
@@ -96,7 +103,25 @@ public class TaskGetTopics extends AsyncTask<String,String,String> {
         };
         topicAdapter.notifyDataSetChanged();
         listView.setAdapter(topicAdapter);
+        listView.setTextFilterEnabled(true);
         textView.setText(result);
+        etSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+                topicAdapter.getFilter().filter(editable);
+            }
+        });
     }
 
     private int getSharedfontSize() {
